@@ -2,5 +2,5 @@ apiVersion: v2
 name: rhbk
 description: A Helm chart for deploy Red Hat Build of Keycloa through it Operator
 type: application
-version: 22.0.10
-appVersion: "22.0.10"
+version: 24.0.5
+appVersion: "24.0.5"

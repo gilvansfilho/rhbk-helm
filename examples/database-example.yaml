@@ -1,0 +1,37 @@
+##################
+### DEPLOYMENT ###
+##################
+# Required values
+name: rhbk
+
+operator:
+  channel: stable-v24
+  startingCSV: rhbk-operator.v24.0.5-opr.1
+  installPlanApproval: Manual
+
+# Number of instances. Defaults to 1
+instances: 1
+
+# Name of namespace
+namespace: rhbk-namespace
+
+##################
+#### DATABASE ####
+##################
+db:
+  vendor: postgres
+  host: postgres-db
+  usernameSecret:
+    name: db-secret
+    key: username
+  passwordSecret:
+    name: db-secret
+    key: password
+
+# This will create a secret
+# Remove this block if you don't want the secret to be managed by Helm
+# To keep things simple `dbSecret.name` should match `db.usernameSecret` and `db.passwordSecret`
+dbSecret:
+  name: db-secret
+  username: dTV1NHIxMA==
+  password: czNuaDQ=

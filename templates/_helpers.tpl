@@ -6,24 +6,6 @@ Expand the name of the chart.
 {{- end }}
 
 {{/*
-Create a default fully qualified app name.
-We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
-If release name contains chart name it will be used as a full name.
-*/}}
-{{- define "rhbk.fullname" -}}
-{{- if .Values.fullnameOverride }}
-{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- $name := default .Chart.Name .Values.nameOverride }}
-{{- if contains $name .Release.Name }}
-{{- .Release.Name | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
-{{- end }}
-{{- end }}
-{{- end }}
-
-{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "rhbk.chart" -}}
@@ -51,12 +33,12 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Create the name of the service account to use
+Operator Label
 */}}
-{{- define "rhbk.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "rhbk.fullname" .) .Values.serviceAccount.name }}
+{{- define "rhbk.operatorLabel" -}}
+{{- if .Values.namespace }}
+operators.coreos.com/rhbk-operator.{{ .Values.namespace }}: ''
 {{- else }}
-{{- default "default" .Values.serviceAccount.name }}
+operators.coreos.com/rhbk-operator.{{ .Values.name }}: ''
 {{- end }}
 {{- end }}

@@ -1,0 +1,28 @@
+##################
+### DEPLOYMENT ###
+##################
+# Required values
+name: rhbk
+
+operator:
+  channel: stable-v24
+  startingCSV: rhbk-operator.v24.0.5-opr.1
+  installPlanApproval: Manual
+
+# Number of instances. Defaults to 1
+instances: 1
+
+# Name of namespace
+namespace: rhbk-namespace
+
+##################
+### ADDITIONAL ###
+##### OPTIONS ####
+##################
+additionalOptions:
+  - name: spi-connections-http-client-default-connection-pool-size
+    secret: # Secret reference
+      name: http-client-secret # name of the Secret
+      key: poolSize # name of the Key in the Secret
+  - name: spi-email-template-mycustomprovider-enabled
+    value: true # plain text value

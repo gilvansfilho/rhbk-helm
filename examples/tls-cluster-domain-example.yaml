@@ -1,0 +1,36 @@
+##################
+### DEPLOYMENT ###
+##################
+# Required values
+name: rhbk
+
+operator:
+  channel: stable-v24
+  startingCSV: rhbk-operator.v24.0.5-opr.1
+  installPlanApproval: Manual
+
+# Number of instances. Defaults to 1
+instances: 1
+
+# Name of namespace
+namespace: rhbk-namespace
+
+##################
+###### HTTP ######
+##################
+http:
+  tlsSecret: tls-secret
+
+# use service serving certificate
+tlsSecret:
+  servingCert: true
+
+##################
+#### HOSTNAME ####
+##################
+hostname:
+  strict: false
+  hostname: rhbk.apps.cluster-kssx9.dynamic.redhatworkshops.io
+
+ingress:
+  enabled: false
