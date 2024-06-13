@@ -11,7 +11,7 @@ metadata:
 spec:
   to:
     kind: Service
-    name: rhbk-custom-service
+    name: {{ .Values.name }}-custom-service
   tls:
     termination: reencrypt
   host: {{ .Values.hostname.hostname }}
