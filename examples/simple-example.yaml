@@ -7,7 +7,7 @@ name: rhbk
 operator:
   channel: stable-v24
   startingCSV: rhbk-operator.v24.0.5-opr.1
-  installPlanApproval: Manual
+  installPlanApproval: Automatic
 
 # Number of instances. Defaults to 1
 instances: 1
