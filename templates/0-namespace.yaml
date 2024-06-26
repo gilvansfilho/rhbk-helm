@@ -6,6 +6,7 @@ metadata:
     argocd.argoproj.io/managed-by: openshift-gitops
     {{- include "rhbk.labels" . | nindent 4 }}
   annotations:
+    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "0"
     openshift.io/description: "Red Hat Build of Keycloak Project"
     openshift.io/display-name: "Red Hat Build of Keycloak"
