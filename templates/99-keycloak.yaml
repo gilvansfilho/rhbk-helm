@@ -1,3 +1,4 @@
+{{- if not .Values.deployOperator }}
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: Keycloak
 metadata:
@@ -40,6 +41,16 @@ spec:
     {{- toYaml .Values.ingress | nindent 4 }}
   {{- end }}
 
+  {{- if .Values.truststores }}
+  truststores:
+    {{- toYaml .Values.truststores | nindent 4 }}
+  {{- end }}
+
+  {{- if .Values.resources }}
+  resources:
+    {{- toYaml .Values.resources | nindent 4 }}
+  {{- end }}
+
   {{- if .Values.features }}
   features:
     {{- toYaml .Values.features | nindent 4 }}
@@ -48,4 +59,5 @@ spec:
   {{- if .Values.additionalOptions }}
   additionalOptions:
     {{- toYaml .Values.additionalOptions | nindent 4 }}
+  {{- end }}
   {{- end }}
