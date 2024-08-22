@@ -4,8 +4,11 @@
 # Required values
 name: rhbk
 
-# Number of instances. Defaults to 1
-instances: 1
+deployOperator: true
+operator:
+  channel: stable-v24
+  startingCSV: rhbk-operator.v24.0.5-opr.1
+  installPlanApproval: Manual
 
 # Name of namespace
 namespace: rhbk-namespace
